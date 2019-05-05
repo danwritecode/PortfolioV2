@@ -5,6 +5,7 @@ import blog from '@/components/Blog'
 import missionstatement from '@/components/MissionStatement'
 import contact from '@/components/Contact'
 import writeblog from '@/components/WriteBlog'
+import blogPost from '@/components/BlogPost'
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ export default new Router({
       path: '/writeblog',
       name: 'writeblog',
       component: writeblog
+    },
+    {
+      path: '/blogpost:id',
+      name: 'blogpost',
+      component: blogPost
     }
     
   ]

@@ -2,12 +2,14 @@
   <div class="blog">
       <div class="container-fluid mt-4">
           <div class="row justify-content-center">
-              <div class="col-auto mb-3" v-for="item in blogData">
+              <div class="col-auto mb-3" v-bind:key=item.Blog_Id v-for="item in blogData">
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem; max-height: 18rem;">
                   <div class="card-body">
                     <h4 class="card-title">{{item.Title_Tx}}</h4>
                     <p class="card-text">{{item.Abstract_Tx}}</p>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                    <router-link :to="{ name: 'blogpost', params: { id: item.Blog_Id } }">
+                      <button type="button" class="btn btn-primary btn-lg btn-block">READ POST</button>
+                    </router-link>
                   </div>
                 </div>
               </div>
@@ -29,7 +31,7 @@ export default {
         .get('https://w1k14u6tm8.execute-api.us-east-2.amazonaws.com/Dev/getallblogposts')
         .then(response => (this.blogData = response.data))
         .catch(error => alert(error))
-    }
+  }
 
 }
 </script>
