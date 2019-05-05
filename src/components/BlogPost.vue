@@ -1,9 +1,10 @@
 <template>
-  <div class="blogPost">
-    <h1>Your Blog ID is {{ id }}</h1>
-    <h1>{{ blogData }}</h1>
+  <div class="blogPost" id="blogPost">
     <br>
-    <p>Test</p>
+    <h1>{{ blogData.Title_Tx }}</h1>
+    <h6>Published On: {{ blogData.CreatedOn }}</h6>
+    <br>
+    <span style="white-space: pre-wrap;">{{ blogData.Body_Tx }}</span>
   </div>
 </template>
 
@@ -34,6 +35,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+#blogPost {
+  margin: 0 2rem 0 2rem;
+  text-align: left;
+}
 h1, h2 {
   font-weight: normal;
 }
