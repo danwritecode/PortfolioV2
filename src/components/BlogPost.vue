@@ -1,8 +1,10 @@
 <template>
   <div class="blogPost" id="blogPost">
     <br>
-    <h1>{{ blogData.Title_Tx }}</h1>
-    <h6>Published On: {{ blogData.CreatedOn }}</h6>
+      <div id="blogHeader">
+        <h1>{{ blogData.Title_Tx }}</h1>
+        <h6>Published On: {{ blogData.CreatedOn }}</h6>
+      </div>
     <br>
     <span style="white-space: pre-wrap;">{{ blogData.Body_Tx }}</span>
   </div>
@@ -40,6 +42,13 @@ export default {
   margin: 0 2rem 0 2rem;
   text-align: left;
 }
+
+#blogHeader {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
 h1, h2 {
   font-weight: normal;
 }
