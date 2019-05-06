@@ -1,12 +1,18 @@
 <template>
   <div class="blogPost" id="blogPost">
     <br>
-      <div id="blogHeader">
-        <h1>{{ blogData.Title_Tx }}</h1>
-        <h6>Published On: {{ blogData.CreatedOn }}</h6>
+      <div id="spinnerLoading" v-if="loading">
+        <b-spinner></b-spinner>
       </div>
-    <br>
-    <span style="white-space: pre-wrap;">{{ blogData.Body_Tx }}</span>
+      <div v-else>
+        <div id="blogHeader">
+          <h1>{{ blogData.Title_Tx }}</h1>
+          <h6>Published On: {{ blogData.CreatedOn }}</h6>
+          <h6>Author: Dan Nelson</h6>
+        </div>
+        <br>
+        <span style="white-space: pre-wrap;">{{ blogData.Body_Tx }}</span>
+      </div>
   </div>
 </template>
 
@@ -16,7 +22,8 @@ export default {
   data () {
     return {
       id: 0,
-      blogData: null
+      blogData: null,
+      loading: true
 
     }
   },
@@ -25,6 +32,7 @@ export default {
     axios
       .get('https://w1k14u6tm8.execute-api.us-east-2.amazonaws.com/Dev/getblogpostbyid?Blog_Id='+this.id)
       .then(response => (this.blogData = response.data))
+      .then(this.loading = false)
       .catch(error => alert(error))
   },
   methods: {
@@ -37,6 +45,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#spinnerLoading {
+  margin-left: 48%;
+  margin-top: 25%;
+}
 
 #blogPost {
   margin: 0 2rem 0 2rem;
